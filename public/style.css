@@ -1,47 +1,106 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Segoe UI', Arial, Helvetica, sans-serif;
     margin: 0;
-    padding: 16px;
-    background: #f5f7fb;
+    padding: 24px;
+    background: linear-gradient(135deg, #e3eafc 0%, #f5f7fb 100%);
     color: #222;
 }
 
 header h1 {
-    margin: 0 0 16px 0;
+    margin: 0 0 24px 0;
+    font-weight: 600;
+    font-size: 2em;
+    letter-spacing: 1px;
 }
 
-#upload-section {
-    margin-bottom: 20px;
+.upload-controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.upload-controls input[type="text"] {
+    padding: 7px 12px;
+    border: 1px solid #cfd8e3;
+    border-radius: 5px;
+    font-size: 1em;
+    width: 180px;
+}
+
+.upload-controls button {
+    background: #3b82f6;
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(59,130,246,0.08);
+    transition: background 0.18s;
+}
+.upload-controls button:hover {
+    background: #2563eb;
 }
 
 .hint {
     color: #555;
-    font-size: 0.9em;
+    font-size: 0.95em;
+    margin-top: 8px;
 }
 
 #uploads-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 18px;
+    margin-top: 18px;
 }
 
 .tile {
     background: #fff;
     border: 1px solid #e0e6ef;
-    padding: 12px;
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+    padding: 18px 14px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     cursor: pointer;
+    transition: box-shadow 0.15s;
+    position: relative;
+}
+.tile:hover {
+    box-shadow: 0 4px 16px rgba(59,130,246,0.08);
 }
 
 .tile h3 {
-    margin: 0 0 8px 0;
-    font-size: 1.05em;
+    margin: 0 0 10px 0;
+    font-size: 1.12em;
+    font-weight: 500;
 }
 
 .tile .meta {
-    font-size: 0.85em;
+    font-size: 0.95em;
     color: #555;
+}
+
+.tile .meta.small {
+    font-size: 0.88em;
+    color: #888;
+}
+
+.tile .delete-btn {
+    background: #ef4444;
+    color: #fff;
+    border: none;
+    padding: 5px 12px;
+    border-radius: 4px;
+    font-size: 0.95em;
+    cursor: pointer;
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    transition: background 0.18s;
+}
+.tile .delete-btn:hover {
+    background: #b91c1c;
 }
 
 .file-item {
@@ -54,8 +113,8 @@ header h1 {
 .file-item.folder {
     flex-direction: column;
     align-items: stretch;
-    padding: 6px 0;
-    border-bottom: 1px dashed #eee;
+    padding: 8px 0;
+    border-bottom: 1px dashed #e3eafc;
 }
 
 .file-row {
@@ -67,9 +126,9 @@ header h1 {
 
 .caret {
     display: inline-block;
-    width: 12px;
+    width: 16px;
     text-align: center;
-    font-size: 12px;
+    font-size: 15px;
     cursor: pointer;
     transition: transform 0.12s linear;
     color: #666;
@@ -80,10 +139,11 @@ header h1 {
 }
 
 .icon {
-    width: 18px;
+    width: 20px;
     display: inline-block;
     text-align: center;
     margin-right: 6px;
+    font-size: 1.2em;
 }
 
 .icon.folder::before {
@@ -97,10 +157,16 @@ header h1 {
 .name {
     flex: 1;
     cursor: pointer;
+    font-weight: 500;
+    color: #2563eb;
+    transition: color 0.15s;
+}
+.name:hover {
+    color: #1d4ed8;
 }
 
 .children {
-    margin-left: 22px;
+    margin-left: 24px;
     display: none;
     padding-left: 6px;
 }
@@ -110,18 +176,27 @@ header h1 {
 }
 
 .small {
-    font-size: 0.85em;
+    font-size: 0.88em;
     color: #666;
 }
 
 .file-item button {
     margin-left: 6px;
-    font-size: 0.85em;
-    padding: 4px 8px;
+    font-size: 0.92em;
+    padding: 4px 10px;
+    background: #10b981;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+.file-item button:hover {
+    background: #059669;
 }
 
 .file-row:hover {
-    background: rgba(0, 0, 0, 0.02);
+    background: rgba(59,130,246,0.06);
     border-radius: 4px;
 }
 
@@ -135,7 +210,7 @@ header h1 {
     top: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(59,130,246,0.12);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -144,22 +219,35 @@ header h1 {
 
 .modal-content {
     background: #fff;
-    padding: 16px;
-    width: 90%;
+    padding: 22px;
+    width: 95%;
     max-width: 900px;
-    max-height: 90vh;
+    max-height: 92vh;
     overflow: auto;
-    border-radius: 6px;
+    border-radius: 10px;
     position: relative;
+    box-shadow: 0 8px 32px rgba(59,130,246,0.12);
 }
 
 #modal-close {
     position: absolute;
-    right: 12px;
-    top: 12px;
+    right: 18px;
+    top: 18px;
+    background: #e5e7eb;
+    color: #222;
+    border: none;
+    border-radius: 4px;
+    padding: 5px 12px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.18s;
+}
+#modal-close:hover {
+    background: #d1d5db;
 }
 
 #file-tree ul {
     list-style: none;
     padding-left: 18px;
+    margin: 0;
 }

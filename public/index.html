@@ -2,25 +2,25 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>File Sharing App</title>
+  <title>File Sharing</title>
   <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" />
   <link rel="stylesheet" href="/public/style.css" />
 </head>
 <body>
   <header>
-    <h1>File Sharing App</h1>
+    <h1>File Sharing</h1>
   </header>
-
   <section id="upload-section">
-    <button id="chooseBtn" type="button">Choose files or folders</button>
-    <input id="folderInput" type="file" webkitdirectory directory multiple style="display:none" />
+    <div class="upload-controls">
+      <input id="deviceNameInput" type="text" placeholder="Device/Computer name" />
+      <button id="chooseFilesBtn" type="button">Choose files</button>
+      <input id="fileInput" type="file" multiple style="display:none" />
+      <button id="chooseFoldersBtn" type="button">Choose folders</button>
+      <input id="folderInput" type="file" webkitdirectory directory multiple style="display:none" />
+    </div>
     <form id="my-dropzone" class="dropzone"></form>
-    <p class="hint">You can drop files or folders. Folder uploads keep nested folder structure. Use modern browsers (webkitRelativePath supported).</p>
   </section>
-
-  <section id="uploads-grid">
-  </section>
-
+  <section id="uploads-grid"></section>
   <div id="modal" class="modal hidden">
     <div class="modal-content">
       <button id="modal-close">Close</button>
@@ -32,7 +32,6 @@
       </div>
     </div>
   </div>
-
   <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
   <script src="/public/app.js"></script>
 </body>
