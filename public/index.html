@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Simple File Sharing</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Simple File Sharing</h1>
+      
+      <div class="upload-section">
+        <label for="deviceName">Device Name:</label>
+        <input type="text" id="deviceName" placeholder="my device" />
+
+        <div class="upload-options">
+          <label>
+            <input type="checkbox" id="uploadFoldersToggle" />
+            Upload folders
+          </label>
+        </div>
+
+        <label for="fileInput">Choose Files or Folders to Upload:</label>
+        <input
+          type="file"
+          id="fileInput"
+          multiple
+          webkitdirectory
+          directory
+        />
+
+        <button id="uploadBtn">Upload</button>
+
+        <div id="progressStatus"></div>
+      </div>
+
+      <hr />
+
+      <h2>Uploaded Sessions</h2>
+      <div id="sessionsContainer" class="sessions-container">
+      </div>
+    </div>
+
+    <div id="sessionModal" class="modal hidden" aria-hidden="true">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 id="modalTitle">Session Files</h3>
+          <button id="modalCloseBtn" class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div id="modalSessionInfo" class="session-info"></div>
+          <div id="modalFilesList" class="modal-files-list"></div>
+        </div>
+        <div class="modal-footer">
+          <button id="downloadSelectedBtn">Download Selected</button>
+          <button id="downloadAllBtn">Download All</button>
+          <button id="modalCancelBtn">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

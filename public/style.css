@@ -1,0 +1,241 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f9fa;
+  color: #333;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 2.5rem auto;
+  padding: 1.25rem;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfcfd 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(18, 38, 63, 0.08);
+}
+
+h1, h2 {
+  margin-bottom: 1rem;
+}
+
+.upload-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 1.5rem;
+}
+
+.upload-section label {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.upload-section input[type="text"] {
+  width: 50%;
+  margin-bottom: 0.8rem;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.upload-options {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  color: #24303a;
+}
+
+#fileInput {
+  margin: 0.5rem 0;
+}
+
+button#uploadBtn,
+.modal-footer button {
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  box-shadow: 0 4px 10px rgba(2,6,23,0.06);
+}
+button#uploadBtn:hover,
+.modal-footer button:hover {
+  transform: translateY(-2px);
+}
+
+button#uploadBtn {
+  background-color: #007bff;
+  border: none;
+  padding: 0.6rem 1rem;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button#uploadBtn:hover {
+  background-color: #0056b3;
+}
+
+#progressStatus {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #444;
+}
+
+.sessions-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.session-card {
+  background: linear-gradient(180deg, #ffffff, #f7f9fb);
+  border-radius: 10px;
+  padding: 1rem;
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+.session-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(18, 38, 63, 0.08);
+}
+.session-header {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #0f1724;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.session-meta {
+  color: #55606a;
+  font-size: 0.92rem;
+}
+
+.session-badge {
+  margin-left: auto;
+  background: #eef6ff;
+  color: #0366d6;
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.modal.hidden {
+  display: none;
+}
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.45);
+  z-index: 9999;
+}
+.modal-content {
+  border-radius: 10px;
+  padding: 0.85rem;
+  background: #fff;
+  width: min(900px, 95%);
+  max-height: 85vh;
+  overflow: auto;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.modal-body {
+  padding-top: 0.4rem;
+}
+.modal-files-list {
+  margin-top: 0.5rem;
+}
+.file-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+.file-item:last-child { border-bottom: none; }
+.file-item label {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  cursor: pointer;
+  flex: 1;
+}
+.file-item span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.file-meta {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-left: 0.4rem;
+}
+
+.modal-footer {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.modal-footer button {
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.session-card .delete-btn {
+  display: none;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: rgba(255,255,255,0.9);
+  color: #c53030;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+  box-shadow: 0 4px 10px rgba(2,6,23,0.06);
+}
+.session-card .delete-btn:hover {
+  transform: translateY(-1px);
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+.session-card:hover .delete-btn {
+  display: block;
+}
+
+@media (max-width: 540px) {
+  .sessions-container { grid-template-columns: 1fr; }
+  .modal-content { width: 96%; padding: 0.6rem; }
+}
